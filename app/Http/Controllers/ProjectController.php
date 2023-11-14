@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use App\Models\Project;
+use App\Models\Tecnology;
 //use App\Http\Requests\StoreProjectRequest;
 //use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
@@ -31,7 +32,10 @@ class ProjectController extends Controller
 
 
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+
+        $technologies = Tecnology::all();
+
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /* Store a newly created resource in storage. */

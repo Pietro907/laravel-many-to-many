@@ -95,3 +95,16 @@ php
 
 - php artisan migrate
 
+#### Tecnology & Project model
+
+- Tecnology -> public fn projects(): BelongsToMany
+                return $this->belongsToMany(Project::class);
+
+- Project -> public fn technologies(): BelongsToMany
+                return $this->belongsToMany(Technology::class);
+
+
+                
+###### create 
+
+- $technologies = Tecnology:all();

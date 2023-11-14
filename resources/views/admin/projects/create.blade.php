@@ -46,29 +46,51 @@
             <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
                 <select class="form-select @error('type_id') is-invalid  @enderror" name="type_id" id="type_id">
-                    
+
                     <option selected disabled>Select a type</option>
                     <option value="">Uncategorized</option>
-    
+
                     @forelse ($types as $type)
                         <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
                             {{ $type->type }}
                         </option>
                     @empty
-                    @endforelse
-    
-    
-                </select>
-            </div>
-            @error('type_id')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
 
-            <button type="submit" class="btn btn-primary">Aggiungi Proj</button>
+                        N/A
+
+                    @endforelse
+
+                    <div class="mb-3">
+                        <label for="technologies" class="form-label">Technologies</label>
+                        <select multiple class="form-select" name="technologies[]" id="technologies">
+                            <option disabled>Select one</option>
+
+                            <!-- TODO: Improve validation outputs -->
+                            @foreach ($technologies as $technology)
+                                <option value="{{ $technology->id }}"
+                                    {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
+                                    {{ $technology->name_tech }}</option>
+                            @endforeach
+
+                            @error('type_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+
+                        </select>
+                    </div>
+                    @error('technologies')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+
+
+                </select>
+
+                <button type="submit" class="btn btn-primary mb-3">Aggiungi Proj</button>
+           
+            </div>
 
         </form>
 
-        
 
     </div>
 @endsection
