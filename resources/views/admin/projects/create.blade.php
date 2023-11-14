@@ -57,7 +57,6 @@
                     @empty
 
                         N/A
-
                     @endforelse
 
                     <div class="mb-3">
@@ -86,11 +85,10 @@
                 </select>
 
                 <button type="submit" class="btn btn-primary mb-3">Aggiungi Proj</button>
-           
+
             </div>
 
         </form>
-
 
     </div>
 @endsection
