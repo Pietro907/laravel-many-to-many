@@ -61,8 +61,14 @@ aggiungere le operazioni CRUD per il model Type, in modo da gestire le tipologie
 
  -->
 
-# popolo con seed di TecnologySeeder
+# creo il model, migration & seed Tecnology/Tecnologies
+
+- php artisan make:model Tecnology -ms
+
+## popolo con seed di TecnologySeeder
 
  - php artisan db:seed --class=TecnologySeeder
 
-## 
+### creo la cartella placeholders in torgae/app/public/storage/project_images + placeholders
+
+- php artisan storage:link
