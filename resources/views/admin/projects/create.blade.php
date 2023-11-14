@@ -59,34 +59,36 @@
                         N/A
                     @endforelse
 
-                    <div class="mb-3">
-                        <label for="technologies" class="form-label">Technologies</label>
-                        <select multiple class="form-select" name="technologies[]" id="technologies">
-                            <option disabled>Select one</option>
+                </select>
 
-                            <!-- TODO: Improve validation outputs -->
-                            @foreach ($technologies as $technology)
-                                <option value="{{ $technology->id }}"
-                                    {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
-                                    {{ $technology->name_tech }}</option>
-                            @endforeach
+                
+            </div>
 
-                            @error('type_id')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
+            <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                <select multiple class="form-select" name="technologies[]" id="technologies">
+                    <option disabled>Select one</option>
 
-                        </select>
-                    </div>
-                    @error('technologies')
+                    <!-- TODO: Improve validation outputs -->
+                    @foreach ($technologies as $technology)
+                        <option value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
+                            
+                            {{ $technology->technology }}
+
+                        </option>
+                    @endforeach
+
+                    @error('type_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
-
                 </select>
-
-                <button type="submit" class="btn btn-primary mb-3">Aggiungi Proj</button>
-
             </div>
+            @error('technologies')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+            <button type="submit" class="btn btn-primary my-5">Aggiungi Proj</button>
 
         </form>
 

@@ -16,7 +16,7 @@ class TecnologySeeder extends Seeder
         $technologies = ['Vue', 'Laravel', 'php', 'javascript', 'html', 'css', 'bootstrap', 'mysql', 'sass'];
         foreach ($technologies as $tech) {
             $new_tech = new Tecnology(); 
-            $new_tech->name_tech = $tech;
+            $new_tech->technology = $tech;
             $new_tech->save();
         }
     }

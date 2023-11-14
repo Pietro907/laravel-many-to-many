@@ -24,7 +24,7 @@ class ProjectController extends Controller
     /* Show the form for creating a new resource. */
     public function create()
     {
-        $project = Project::onlyTrashed()->where('id');
+        $project = Project::all()/* onlyTrashed()->where('id') */;
         /* if ($project) {
            $project->restore();
            return $project;
@@ -50,7 +50,9 @@ class ProjectController extends Controller
         $project->tech = $request->tech;
         $project->link = $request->link;
         $project->github_link = $request->github_link;
+
         $project->type_id = $request->type_id;
+        
         $project->save();
         return to_route('project.index');
     }
