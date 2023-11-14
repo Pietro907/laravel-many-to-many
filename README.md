@@ -87,4 +87,11 @@ $table->foreign('project_id')->reference('id')->on('project');
 $table->unsignedBigInteger('technology_id');
 $table->foreign('technology_id')->reference('id')->on('technology');
 
+$table->primary(['project_id', 'technology_id'])
+
 php
+
+#### migrazione
+
+- php artisan migrate
+
