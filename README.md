@@ -72,3 +72,19 @@ aggiungere le operazioni CRUD per il model Type, in modo da gestire le tipologie
 ### creo la cartella placeholders in torgae/app/public/storage/project_images + placeholders
 
 - php artisan storage:link
+
+#### sedeer db
+
+- php artisan db:seed
+
+- php artisan make:migration create_project_technology_table
+
+php
+
+$table->unsignedBigInteger('project_id');
+$table->foreign('project_id')->reference('id')->on('project');
+
+$table->unsignedBigInteger('technology_id');
+$table->foreign('technology_id')->reference('id')->on('technology');
+
+php
