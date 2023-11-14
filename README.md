@@ -60,3 +60,9 @@ Bonus 2 (opzionale):
 aggiungere le operazioni CRUD per il model Type, in modo da gestire le tipologie di progetto direttamente dal pannello di amministrazione.
 
  -->
+
+# popolo con seed di TecnologySeeder
+
+ - php artisan db:seed --class=TecnologySeeder
+
+## 
