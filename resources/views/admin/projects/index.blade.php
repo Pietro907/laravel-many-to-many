@@ -1,17 +1,29 @@
 @extends('layouts.admin')
 
 @section('content')
+@if (session('messaggio'))
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 px-0 my-3">
+                <div class="card text-center text-white bg-danger py-2">
+                    {{ session('messaggio') }}
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
     <div class="d-flex justify-content-center">
 
         <a href="{{ route('project.create') }}"><i class="fa-solid fa-plus text-white bg-warning rounded-5 p-4 my-3"></i></a>
     </div>
 
-    @if (session('messaggio'))
+
+    @if (session('create_mess'))
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 px-0 my-3">
-                    <div class="card text-center text-white bg-danger py-2">
-                        {{ session('messaggio') }}
+                    <div class="card text-center text-white bg-success py-2">
+                        {{ session('create_mess') }}
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@ class ProjectController extends Controller
         $project->type_id = $request->type_id;
         
         $project->save();
-        return to_route('project.index');
+        return to_route('project.index')->with('create_mess', 'Created Project success');
     }
 
     /* Display the specified resource.*/

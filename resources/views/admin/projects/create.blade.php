@@ -3,6 +3,8 @@
 @section('content')
     <h1>Create</h1>
 
+   
+
     <div class="col-6 mx-auto">
         <form action="{{ route('project.store') }}" method="post" enctype="multipart/form-data">
 

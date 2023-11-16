@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('thumb')->nullable();
             $table->text('description')->nullable();
             $table->string('authors')->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('tech')->nullable();
             $table->timestamps();
         });
