@@ -3,8 +3,6 @@
 @section('content')
     <h1>Create</h1>
 
-   
-
     <div class="col-6 mx-auto">
         <form action="{{ route('project.store') }}" method="post" enctype="multipart/form-data">
 
@@ -20,9 +18,10 @@
             </div>
 
             <div class="mb-3">
-              <label for="cover_image" class="form-label">Choose image</label>
-              <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Cover Image" aria-describedby="fileHelpId">
-              <div id="fileHelpId" class="form-text">Help text</div>
+                <label for="cover_image" class="form-label">Choose image</label>
+                <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Cover Image"
+                    aria-describedby="fileHelpId">
+                <div id="fileHelpId" class="form-text">Help text</div>
             </div>
 
             <div class="mb-3">
@@ -42,7 +41,6 @@
                 <small id="authorsHelper" class="form-text text-muted">Authors of Project</small>
             </div>
 
-
             <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
                 <select class="form-select @error('type_id') is-invalid  @enderror" name="type_id" id="type_id">
@@ -61,36 +59,36 @@
 
                 </select>
 
-                
             </div>
 
             <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
                 <select multiple class="form-select" name="technologies" id="technologies">
                     <option selected disabled>Select one</option>
-
-                    <!-- TODO: Improve validation outputs -->
-                    @foreach ($technologies as $technology)
-                        <option value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
-                            {{ $technology->technology }}
-                            
-
-                        </option>
-                    @endforeach
-
-                    @error('type_id')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-
-                </select>
             </div>
-            @error('technologies')
+
+            <!-- TODO: Improve validation outputs -->
+            @foreach ($technologies as $technology)
+                <option value="{{ $technology->id }}"
+                    {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
+                    {{ $technology->technology }}
+                </option>
+            @endforeach
+
+            
+            @error('type_id')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            <button type="submit" class="btn btn-primary my-5">Aggiungi Proj</button>
+            </select>
+    </div>
+    @error('technologies')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
 
-        </form>
+    <button type="submit" class="btn btn-primary my-5">Aggiungi Proj</button>
+
+    </form>
 
     </div>
 @endsection

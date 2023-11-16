@@ -53,13 +53,12 @@
                         <td>{{ $project->link }}</td>
                         <td>{{ $project->github_link }}</td>
                         <td>{{ $project->type ? $project->type->type : 'Nessuna tipologia' }}</td>
-                        <td>{{ $project->technology ? $project->technology->technology : 'Nessuna tecnologia' }}</td>
                         <td>
-
-                            <a href="{{ route('project.restore', $project->id) }}" class="btn btn-success text-white px-2 py-0 my-2 fs-6"><i
-                                    class="fa-solid fa-recycle"></i></a>
+                            
+                            <a href="{{ route('project.restore', $project->id) }}"
+                                class="btn btn-success px-2 py-0 my-2 fs-6"><i class="fa-solid fa-recycle"></i></a>
                         </td>
-                        <td>{{ $project->tech }}</td>
+                        <td>{{ $project->technology ? $project->technology->technology : 'Nessuna tecnologia' }}</td>
                     </tr>
                 @endforeach
 

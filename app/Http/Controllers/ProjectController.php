@@ -56,7 +56,7 @@ class ProjectController extends Controller
         $project->type_id = $request->type_id;
         
         $project->save();
-        return to_route('project.index')->with('create_mess', 'Created Project success');
+        return to_route('project.index')->with('create_mess', 'Created Project success ✅');
     }
 
     /* Display the specified resource.*/
@@ -104,8 +104,6 @@ class ProjectController extends Controller
 
     public function recycle() {
         $trashed = Project::onlyTrashed()->orderByDesc('id')->paginate('10');
-        //dd($trashed);
-
         
         return view('admin.projects.recycle', compact('trashed'));
         
@@ -114,13 +112,10 @@ class ProjectController extends Controller
     public function restore($id) {
         $project = Project::onlyTrashed()->find($id);
 
-
         if($project){
             $project->restore();
             return redirect()->route('project.recycle')->with('recycle_mess', 'The project was restored');
         }
-
-        
         
     }
 }

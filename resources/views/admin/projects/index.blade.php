@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-@if (session('messaggio'))
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 px-0 my-3">
-                <div class="card text-center text-white bg-danger py-2">
-                    {{ session('messaggio') }}
+    @if (session('messaggio'))
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 px-0 my-3">
+                    <div class="card text-center text-white bg-danger py-2">
+                        {{ session('messaggio') }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endif
+    @endif
     <div class="d-flex justify-content-center">
 
         <a href="{{ route('project.create') }}"><i class="fa-solid fa-plus text-white bg-warning rounded-5 p-4 my-3"></i></a>
@@ -71,23 +71,61 @@
                             {{-- <a href="project/{project}">{{ $project->slug }}</a> --}}
 
                             <form action="{{ route('project.show', [$project->id]) }}">
-
-                                <button type="submit" class="btn btn-primary text-white px-2 py-0 my-2 fs-6"><i
-                                        class="fa-solid fa-eye"></i></button>
+                                @csrf
+                                <button type="submit" class="btn btn-primary text-white px-2 py-0 my-2 fs-6">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
                             </form>
 
                             <form action="{{ route('project.edit', [$project->id]) }}">
-
-                                <button type="submit" class="btn btn-secondary text-white px-2 py-0 my-2 fs-6"><i
-                                        class="fa-solid fa-pen-to-square"></i></button>
+                                @csrf
+                                <button type="submit" class="btn btn-secondary text-white px-2 py-0 my-2 fs-6">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
                             </form>
 
-                            <form action="{{ route('project.destroy', [$project->id]) }}" method="POST">
+                            {{-- <form action="{{ route('project.destroy', [$project->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger text-white px-2 py-0 my-2 fs-6"><i
-                                        class="fa-solid fa-trash-can"></i></button>
-                            </form>
+                                <button type="submit" class="btn btn-danger text-white px-2 py-0 my-2 fs-6">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button> --}}
+
+                            <button type="button" class="btn btn-danger text-white px-2 py-0 my-2 fs-6" data-bs-toggle="modal"
+                                data-bs-target="#deleteProject-{{ $project->id }}">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+
+
+                            <div class="modal fade" id="deleteProject-{{ $project->id }}" tabindex="-1"
+                                data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                aria-labelledby="modalTitle-{{ $project->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalTitle-{{ $project->id }}">
+                                                {{ $project->title }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ⚠ Attention! This is a destructive operation. You cannot undo this!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <form action="{{ route('project.destroy', $project) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">⚡ Confirm</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- </form> --}}
 
                         </td>
                         <td>{{ $project->tech }}</td>
