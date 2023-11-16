@@ -26,7 +26,7 @@ class ProjectController extends Controller
     /* Show the form for creating a new resource. */
     public function create()
     {
-        $project = Project::all()/* onlyTrashed()->where('id') */;
+        $project = Project::all();
         /* if ($project) {
            $project->restore();
            return $project;
@@ -78,7 +78,13 @@ class ProjectController extends Controller
     {
 
         $valitaded = $request->validate([
-            //'title' => 'require|unique|max 50|min 3',
+            'title' => 'require|unique|max 50|min 3',
+            'description' => 'require|max 100|min 10',
+            'authors' => 'nullable|unique|max 50|min 3',
+            'link' => 'require|unique|max 255',
+            'git_hub' => 'require|unique|max 255',
+            'type_id' => 'nullable',
+            'tech' => 'nullable',
         ]);
 
         $data = $request->all();
@@ -97,10 +103,24 @@ class ProjectController extends Controller
     }
 
     public function recycle() {
-        
-        $trashed = Project::onlyTrashed();
+        $trashed = Project::onlyTrashed()->orderByDesc('id')->paginate('10');
+        //dd($trashed);
 
+        
         return view('admin.projects.recycle', compact('trashed'));
+        
+    }
+    
+    public function restore($id) {
+        $project = Project::onlyTrashed()->find($id);
+
+
+        if($project){
+            $project->restore();
+            return redirect()->route('project.recycle')->with('recycle_mess', 'The project was restored');
+        }
+
+        
         
     }
 }

@@ -79,7 +79,7 @@
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'project.index' }}" href="{{route('project.index')}}">
                                     <i class="fa-solid fa-laptop-file fa-lg fa-fw"></i> Projects
                                 </a> 
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'project.destroy'}}" href="{{-- {{route('project.destroy')}} --}}">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'project.recycle'}}" href="{{route('project.recycle')}}">
                                     <i class="fa-solid fa-dumpster fa-lg fa-fw"></i> Trashed
                                     
                                 </a> 

@@ -29,6 +29,8 @@ Route::get('recycle', [ProjectController::class, 'recycle'])->name('project.recy
 
 Route::get('/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 
+Route::get('project/{id}/restore',[ProjectController::class, 'restore'])->name('project.restore');
+
 Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

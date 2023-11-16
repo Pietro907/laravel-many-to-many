@@ -40,13 +40,6 @@
                 <small id="authorsHelper" class="form-text text-muted">Authors of Project</small>
             </div>
 
-            <div class="mb-3">
-                <label for="slug" class="form-label">Slug</label>
-                {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
-                <input type="text" class="form-control" name="slug" id="slug" aria-describedby="help"
-                    placeholder="Scrivi gli slug del tuo progetto" value="{{ old('slug' /* $project->authors */) }}">
-                <small id="slugHelper" class="form-text text-muted">Your Slug</small>
-            </div>
 
             <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>

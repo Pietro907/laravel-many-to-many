@@ -56,14 +56,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="slug" class="form-label">Slug</label>
-                {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
-                <input type="text" class="form-control" name="slug" id="slug" aria-describedby="help"
-                    placeholder="Scrivi gli slug del tuo progetto" value="{{ old('slug' /* $project->authors */) }}">
-                <small id="slugHelper" class="form-text text-muted">Scrivi gli autori del tuo progetto</small>
-            </div>
-
-            <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
                 <select multiple class="form-select" name="technologies" id="technologies">
                     <option selected disabled>Select one</option>
