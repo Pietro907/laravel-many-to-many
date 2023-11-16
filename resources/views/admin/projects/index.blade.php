@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 
-@section('content')
+
+    <div class="d-flex justify-content-center">
+
+        <a href="{{ route('project.create') }}"><i class="fa-solid fa-plus text-white bg-warning rounded-5 p-4 my-3"></i></a>
+    </div>
+
+    @section('content')
     @if (session('messaggio'))
         <div class="container-fluid">
             <div class="row">
@@ -12,11 +18,6 @@
             </div>
         </div>
     @endif
-    <div class="d-flex justify-content-center">
-
-        <a href="{{ route('project.create') }}"><i class="fa-solid fa-plus text-white bg-warning rounded-5 p-4 my-3"></i></a>
-    </div>
-
 
     @if (session('create_mess'))
         <div class="container-fluid">
@@ -63,8 +64,8 @@
 
                         <td><em style="font-size: xx-small">{{ $project->description }}</em></td>
                         <td><b>{{ $project->authors }}</b></td>
-                        <td>{{ $project->link }}</td>
-                        <td>{{ $project->github_link }}</td>
+                        <td><a href="{{ $project->link }}"><i class="fa-solid fa-link"></i></a></td>
+                        <td><a href="{{ $project->github_link }}"><i class="fa-brands fa-github"></i></a></td>
                         <td>{{ $project->type ? $project->type->type : 'Nessuna tipologia' }}</td>
                         <td>{{ $project->technology ? $project->technology->technology : 'Nessuna tecnologia' }}</td>
                         <td>
