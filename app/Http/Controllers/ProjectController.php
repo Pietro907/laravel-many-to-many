@@ -41,9 +41,9 @@ class ProjectController extends Controller
     }
 
     /* Store a newly created resource in storage. */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $project = new Project();
+/*         $project = new Project();
         $project->title = $request->title;
         $project->thumb = $request->thumb;
         $project->description = $request->description;
@@ -53,9 +53,19 @@ class ProjectController extends Controller
         $project->link = $request->link;
         $project->github_link = $request->github_link;
 
-        $project->type_id = $request->type_id;
+        $project->type_id = $request->type_id; 
         
-        $project->save();
+        $project->save();*/
+        if ($request->has('thum')) {
+            $path = Storage::put('project_thumb', $request->thumb);
+            $val_data['thumb'] = $path;
+        }
+        $val_data = $request->validated();
+
+        $project =  Project::create($val_data);
+
+
+
         return to_route('project.index')->with('create_mess', 'Created Project success ✅');
     }
 
@@ -74,18 +84,10 @@ class ProjectController extends Controller
     }
 
     /* Update the specified resource in storage. */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
 
-        $valitaded = $request->validate([
-            'title' => 'require|unique|max 50|min 3',
-            'description' => 'require|max 100|min 10',
-            'authors' => 'nullable|unique|max 50|min 3',
-            'link' => 'require|unique|max 255',
-            'git_hub' => 'require|unique|max 255',
-            'type_id' => 'nullable',
-            'tech' => 'nullable',
-        ]);
+
 
         $data = $request->all();
         $project->update($data);

@@ -15,7 +15,20 @@
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId"
                     placeholder="scrivi un titolo per il tuo progetto" value="{{ old('title' /* $project->title */) }}">
                 <small id="titleHelper" class="form-text text-muted">Name Project</small>
+                @error('title')
+                    {{-- <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 px-0 my-3">
+                            <div class="card text-center text-white bg-danger py-2">
+                                {{$message}}
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                    <div class="text-danger mb-2">{{ $message }}</div>
+                @enderror
             </div>
+
 
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Choose image</label>
@@ -75,7 +88,7 @@
                 </option>
             @endforeach
 
-            
+
             @error('type_id')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
