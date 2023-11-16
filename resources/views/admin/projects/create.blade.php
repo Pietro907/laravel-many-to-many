@@ -10,29 +10,34 @@
 
 
             <div class="mb-3">
-                <label for="title" class="form-label">Titolo</label>
+                <label for="title" class="form-label">Title</label>
                 {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId"
                     placeholder="scrivi un titolo per il tuo progetto" value="{{ old('title' /* $project->title */) }}">
-                <small id="titleHelper" class="form-text text-muted">Scrivi un titolo per il tuo progetto</small>
+                <small id="titleHelper" class="form-text text-muted">Name Project</small>
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione</label>
+              <label for="cover_image" class="form-label">Choose image</label>
+              <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder="Cover Image" aria-describedby="fileHelpId">
+              <div id="fileHelpId" class="form-text">Help text</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
                 {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
                 <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId"
                     placeholder="Scrivi una descrizione per il tuo progetto"
                     value="{{ old('description' /* $project->description */) }}">
-                <small id="descriptionHelper" class="form-text text-muted">Scrivi una descrizione per il tuo
-                    progetto</small>
+                <small id="descriptionHelper" class="form-text text-muted">Description Project</small>
             </div>
 
             <div class="mb-3">
-                <label for="authors" class="form-label">Autore/i</label>
+                <label for="authors" class="form-label">Authors</label>
                 {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
                 <input type="text" class="form-control" name="authors" id="authors" aria-describedby="help"
                     placeholder="Scrivi gli autori del tuo progetto" value="{{ old('authors' /* $project->authors */) }}">
-                <small id="authorsHelper" class="form-text text-muted">Scrivi gli autori del tuo progetto</small>
+                <small id="authorsHelper" class="form-text text-muted">Authors of Project</small>
             </div>
 
             <div class="mb-3">
@@ -40,7 +45,7 @@
                 {{-- utilizziamo la funzione old per ridare all'utente i valori inseriti prima,in caso di errore --}}
                 <input type="text" class="form-control" name="slug" id="slug" aria-describedby="help"
                     placeholder="Scrivi gli slug del tuo progetto" value="{{ old('slug' /* $project->authors */) }}">
-                <small id="slugHelper" class="form-text text-muted">Scrivi gli autori del tuo progetto</small>
+                <small id="slugHelper" class="form-text text-muted">Your Slug</small>
             </div>
 
             <div class="mb-3">
@@ -48,7 +53,7 @@
                 <select class="form-select @error('type_id') is-invalid  @enderror" name="type_id" id="type_id">
 
                     <option selected disabled>Select a type</option>
-                    <option value="">Uncategorized</option>
+                    <option disable value="">Uncategorized</option>
 
                     @forelse ($types as $type)
                         <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>

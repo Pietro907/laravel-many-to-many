@@ -53,7 +53,6 @@
                         <td><b>{{ $project->authors }}</b></td>
                         <td>{{ $project->link }}</td>
                         <td>{{ $project->github_link }}</td>
-                        <td>{{ $project->github_link }}</td>
                         <td>{{ $project->type ? $project->type->type : 'Nessuna tipologia' }}</td>
                         <td>{{ $project->technology ? $project->technology->technology : 'Nessuna tecnologia' }}</td>
                         <td>

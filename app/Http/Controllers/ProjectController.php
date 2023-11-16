@@ -69,7 +69,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Tecnology::all();
+        return view('admin.projects.edit', compact('project', 'types','technologies'));
     }
 
     /* Update the specified resource in storage. */
@@ -77,12 +78,13 @@ class ProjectController extends Controller
     {
 
         $valitaded = $request->validate([
-            'title' => 'require|unique|max 50|min 10',
+            //'title' => 'require|unique|max 50|min 3',
         ]);
 
         $data = $request->all();
         $project->update($data);
-        return redirect()->route('project.show', $project->id);
+        //$types->update($data);
+        return redirect()->route('project.show', $project->id); //aggiungere qui compact('types')    ????
     }
 
     /**
