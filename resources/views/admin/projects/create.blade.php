@@ -66,14 +66,14 @@
 
             <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
-                <select multiple class="form-select" name="technologies[]" id="technologies">
-                    <option disabled>Select one</option>
+                <select multiple class="form-select" name="technologies" id="technologies">
+                    <option selected disabled>Select one</option>
 
                     <!-- TODO: Improve validation outputs -->
                     @foreach ($technologies as $technology)
                         <option value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
-                            
                             {{ $technology->technology }}
+                            
 
                         </option>
                     @endforeach
