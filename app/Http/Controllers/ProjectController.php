@@ -66,7 +66,7 @@ class ProjectController extends Controller
 
 
 
-        return to_route('project.index')->with('create_mess', 'Created Project success ✅');
+        return to_route('project.index')->with('create_mess', 'Created Project success 💚');
     }
 
     /* Display the specified resource.*/
@@ -101,7 +101,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('project.index')->with('messaggio', 'hai cancellato il progetto con successo!');
+        return redirect()->route('project.index')->with('messaggio', 'Your Project has deleted! 💥');
     }
 
     public function recycle() {
@@ -116,7 +116,7 @@ class ProjectController extends Controller
 
         if($project){
             $project->restore();
-            return redirect()->route('project.recycle')->with('recycle_mess', 'The project was restored');
+            return redirect()->route('project.recycle')->with('recycle_mess', 'The project was restored ♻');
         }
         
     }
