@@ -54,7 +54,7 @@
                 <small id="authorsHelper" class="form-text text-muted">Authors of Project</small>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
                 <select class="form-select @error('type_id') is-invalid  @enderror" name="type_id" id="type_id">
 
@@ -72,9 +72,34 @@
 
                 </select>
 
+            </div> --}}
+
+
+
+
+
+            <div class="dropdown my-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="multiSelectDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Types
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
+                    @forelse ($types as $type)
+                        <li>
+                            <label>
+                                <input type="checkbox" value="{{ $type->id }}">
+                                {{ $type->type }}
+                            </label>
+                        </li>
+                    @empty
+
+                        N/A
+                    @endforelse
+                </ul>
             </div>
 
-            <div class="mb-3">
+
+            {{-- <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
                 <select multiple class="form-select" name="technologies" id="technologies">
                     <option selected disabled>Select one</option>
@@ -87,6 +112,28 @@
                     {{ $technology->technology }}
                 </option>
             @endforeach
+ --}}
+
+            <div class="dropdown my-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="multiSelectDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Technologies
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="multiSelectDropdown">
+                    @forelse ($technologies as $technology)
+                        <li>
+                            <label>
+                                <input type="checkbox" value="{{ $technology->id }} {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}">
+                                {{ $technology->technology }}
+                            </label>
+                        </li>
+                    @empty
+
+                        N/A
+
+                    @endforelse
+                </ul>
+            </div>
 
 
             @error('type_id')
